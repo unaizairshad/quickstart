@@ -36,9 +36,10 @@ public class SpringJdbcApplication {
 		if(key==2) {
 			service.findAll().forEach(System.out::println);
 		}
+		System.out.println("hi");
 		ctx.close();
 
-	
+		
 	}
 
 }

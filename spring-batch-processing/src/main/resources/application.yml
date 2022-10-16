@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    password: system
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: system
+
+  jpa:
+    hibernate:
+       ddl-auto: update
+    show-sql: true
+    
+  batch:
+    jdbc: 
+      initialize-schema: always
+     
+server:
+  port: 7070       

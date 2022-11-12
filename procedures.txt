@@ -1,0 +1,52 @@
+CREATE OR REPLACE PROCEDURE DEMO_PROC
+IS
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('HELLO WORLD');  //DISPLAYING OUTPUT, ACCEPTS ONLY 1 PARAMETER OF STRING TYPE
+END;
+
+set serveroutput on;
+Execute demo_proc;  //METHOD 1
+
+
+BEGIN
+	DEMO_PROC;	//METHOD2
+END;
+
+PROCEDURE WITH PARAMETER
+
+
+CREATE OR REPLACE PROCEDURE find_annsal(P_NUMBER NUMBER)
+ IS
+ V_SALARY EMP.SAL%TYPE;
+ BEGIN
+  SELECT SAL
+  INTO V_SALARY
+  FROM EMP
+  WHERE EMPNO=P_NUMBER;
+  DBMS_OUTPUT.PUT_LINE('salary is  '||V_SALARY);
+  DBMS_OUTPUT.PUT_LINE('annual salary is  '||V_SALARY*12);
+ END;
+
+ execute find_annsal(7369);
+
+
+
+CREATE OR REPLACE PROCEDURE calc_bonus (emp_id IN INTEGER, bonus OUT REAL) 
+IS
+ BEGIN
+  SELECT sal * 0.10
+  INTO bonus
+  FROM emp
+  WHERE empno = emp_id;
+      bonus := bonus + 500;
+end;
+ 
+declare
+b number(6);
+begin
+calc_bonus(7369,b);
+dbms_output.put_line(b);
+end;
+
+
+
